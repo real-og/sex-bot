@@ -12,3 +12,11 @@ menu_kb = InlineKeyboardMarkup()
 menu_kb.add(InlineKeyboardButton(get_random_pose_btn, callback_data=get_random_pose_btn))
 menu_kb.add(InlineKeyboardButton(info_btn, callback_data=info_btn))
 
+
+pose_card_kb = InlineKeyboardMarkup()
+
+pose_card_kb.add(InlineKeyboardButton(back_to_menu_btn, callback_data=back_to_menu_btn))
+pose_card_kb.insert(InlineKeyboardButton(more_pose_btn, callback_data=more_pose_btn))
+
+
+
