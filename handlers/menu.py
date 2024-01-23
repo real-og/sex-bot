@@ -15,6 +15,9 @@ async def menu_handler(callback: types.CallbackQuery, state: FSMContext):
         with open('images/' + image_name, 'rb') as file:
             await callback.message.answer_photo(file, caption='<i>' + image_name[:-4] + '</i>', reply_markup=kb.pose_card_kb)
         await State.checking_poses.set()
+    elif callback.data == feed_back_btn:
+        await callback.message.answer(texts.feedback_instruction, reply_markup=kb.single_menu_kb)
+        await State.sending_feedback.set()
     elif callback.data == info_btn:
         await callback.message.answer(texts.info)
         await callback.message.answer(texts.menu, reply_markup=kb.menu_kb)    
