@@ -13,3 +13,8 @@ async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.menu, reply_markup=kb.menu_kb)
     await State.menu.set()
     await append_user(datetime.now().strftime('%d/%m/%Y, %H:%M:%S'), message.from_id, message.from_user.username)
+
+
+@dp.message_handler(commands=['help'], state="*")
+async def send_welcome(message: types.Message, state: FSMContext):
+    await message.answer(texts.help_message)
