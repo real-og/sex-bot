@@ -16,7 +16,7 @@ async def pose_handler(callback: types.CallbackQuery, state: FSMContext):
     await callback.answer()
 
 
-@dp.message_handler(state="*", content_types=['any'])
+@dp.message_handler(state=State.sending_feedback, content_types=['any'])
 async def send_welcome(message: types.Message, state: FSMContext):
     await bot.send_message(ADMIN_ID, f'{message.from_user.id} - {message.from_user.username}')
     await message.send_copy(ADMIN_ID)
