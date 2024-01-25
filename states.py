@@ -5,3 +5,4 @@ class State(StatesGroup):
     menu = State()
     checking_poses = State()
     sending_feedback = State()
+    choosing_category = State()

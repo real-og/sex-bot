@@ -24,5 +24,10 @@ pose_card_kb = InlineKeyboardMarkup()
 pose_card_kb.add(InlineKeyboardButton(back_to_menu_btn, callback_data=back_to_menu_btn))
 pose_card_kb.insert(InlineKeyboardButton(more_pose_btn, callback_data=more_pose_btn))
 
+categories_kb = InlineKeyboardMarkup()
+categories_kb.add(InlineKeyboardButton(classic_btn, callback_data=classic_btn))
+categories_kb.add(InlineKeyboardButton(advanced_btn, callback_data=advanced_btn))
+categories_kb.add(InlineKeyboardButton(exotic_btn, callback_data=exotic_btn))
+
 
 
