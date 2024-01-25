@@ -9,3 +9,7 @@ config.py
 test.jpg
 test2.jpg
 .DS_Store
+images/.DS_Store
+categories/classic/.DS_Store
+categories/advanced/.DS_Store
+categories/exotic/.DS_Store

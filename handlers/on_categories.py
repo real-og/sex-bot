@@ -1,5 +1,6 @@
 from loader import dp
 from aiogram import types
+from aiogram.types import InputMediaPhoto
 from aiogram.dispatcher import FSMContext
 import texts
 import keyboards as kb
@@ -65,13 +66,12 @@ async def pose_handler(callback: types.CallbackQuery, state: FSMContext):
         folder_name += 'exotic/'
 
     if callback.data == next_btn:
-        image_name, new_index = logic.get_next_by_categories(category, index)
-        with open(folder_name + image_name, 'rb') as file:
-            await callback.message.answer_photo(file, caption='<i>' + image_name[:-4] + '</i>', reply_markup=kb.pose_card_with_category_kb)
+        image_name, new_index = logic.get_next_by_categories(category, index)   
     elif callback.data == prev_btn:
         image_name, new_index = logic.get_prev_by_categories(category, index)
-        with open(folder_name + image_name, 'rb') as file:
-            await callback.message.answer_photo(file, caption='<i>' + image_name[:-4] + '</i>', reply_markup=kb.pose_card_with_category_kb)
+
+    with open(folder_name + image_name, 'rb') as file:
+        await callback.message.edit_media(InputMediaPhoto(file, caption='<i>' + image_name[:-4] + '</i>'), reply_markup=kb.pose_card_with_category_kb)
 
     if category == classic_btn:
         await state.update_data(classic_index=new_index)
