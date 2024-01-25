@@ -10,8 +10,29 @@ def remove_jpg(file_name):
 
 def get_next_by_categories(category, current_photo_index):
     if category == classic_btn:
-        return CLASSIC_NAMES[(current_photo_index + 1) % len(CLASSIC_NAMES)]
+        new_index = (current_photo_index + 1) % len(CLASSIC_NAMES)
+        return CLASSIC_NAMES[new_index], new_index
     if category == exotic_btn:
-        return EXOTIC_NAMES[(current_photo_index + 1) % len(EXOTIC_NAMES)]
+        new_index = (current_photo_index + 1) % len(EXOTIC_NAMES)
+        return EXOTIC_NAMES[new_index], new_index
     if category == advanced_btn:
-        return ADVANCED_NAMES[(current_photo_index + 1) % len(ADVANCED_NAMES)]
+        new_index = (current_photo_index + 1) % len(ADVANCED_NAMES)
+        return ADVANCED_NAMES[new_index], new_index
+    
+
+def get_prev_by_categories(category, current_photo_index):
+    if category == classic_btn:
+        new_index = current_photo_index - 1
+        if new_index == -1:
+            new_index == len(CLASSIC_NAMES) - 1
+        return CLASSIC_NAMES[new_index], new_index
+    if category == exotic_btn:
+        new_index = current_photo_index - 1
+        if new_index == -1:
+            new_index == len(EXOTIC_NAMES) - 1
+        return EXOTIC_NAMES[new_index], new_index
+    if category == advanced_btn:
+        new_index = current_photo_index - 1
+        if new_index == -1:
+            new_index == len(ADVANCED_NAMES) - 1
+        return ADVANCED_NAMES[new_index], new_index

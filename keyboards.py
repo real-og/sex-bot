@@ -30,8 +30,8 @@ categories_kb.add(InlineKeyboardButton(advanced_btn, callback_data=advanced_btn)
 categories_kb.add(InlineKeyboardButton(exotic_btn, callback_data=exotic_btn))
 
 pose_card_with_category_kb = InlineKeyboardMarkup()
-pose_card_with_category_kb.add(InlineKeyboardButton(prev_btn, callback_data=next_btn))
-pose_card_with_category_kb.insert(InlineKeyboardButton(next_btn, callback_data=prev_btn))
+pose_card_with_category_kb.add(InlineKeyboardButton(prev_btn, callback_data=prev_btn))
+pose_card_with_category_kb.insert(InlineKeyboardButton(next_btn, callback_data=next_btn))
 pose_card_with_category_kb.add(InlineKeyboardButton(back_to_menu_btn, callback_data=back_to_menu_btn))
 
 
