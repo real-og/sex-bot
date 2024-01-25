@@ -10,6 +10,7 @@ from buttons import *
 
 menu_kb = InlineKeyboardMarkup()
 menu_kb.add(InlineKeyboardButton(get_random_pose_btn, callback_data=get_random_pose_btn))
+menu_kb.add(InlineKeyboardButton(on_categories_btn, callback_data=on_categories_btn))
 menu_kb.add(InlineKeyboardButton(feed_back_btn, callback_data=feed_back_btn))
 menu_kb.insert(InlineKeyboardButton(info_btn, callback_data=info_btn))
 
