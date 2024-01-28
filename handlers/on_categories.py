@@ -1,4 +1,4 @@
-from loader import dp
+from loader import dp, DESCRIPTIONS
 from aiogram import types
 from aiogram.types import InputMediaPhoto
 from aiogram.dispatcher import FSMContext
@@ -51,6 +51,19 @@ async def pose_handler(callback: types.CallbackQuery, state: FSMContext):
         await callback.message.answer(texts.menu, reply_markup=kb.menu_kb)
         await State.menu.set()
         return
+    
+    if callback.data == desc_btn:
+        name = callback.message.caption.split('\n')[0]
+        caption = name + '\n\n' + DESCRIPTIONS[name]
+        try:
+            if len(callback.message.caption.split('\n')) > 1:
+                await callback.message.edit_caption('<i>' + name + '</i>', reply_markup=kb.pose_card_with_category_kb)
+            else:
+                await callback.message.edit_caption('<i>' + caption + '</i>', reply_markup=kb.pose_card_with_category_kb)
+        except:
+            await callback.message.answer(texts.error)
+        return
+
     
     data = await state.get_data()
     category = data.get('category')

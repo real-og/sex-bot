@@ -36,3 +36,6 @@ def get_prev_by_categories(category, current_photo_index):
         if new_index == -1:
             new_index == len(ADVANCED_NAMES) - 1
         return ADVANCED_NAMES[new_index], new_index
+    
+
+

@@ -5,6 +5,14 @@ import logging
 import os
 
 
+def load_descriptions(names):
+    descs = dict()
+    for name in names:
+        with open('descriptions/' + name.replace('.jpg', '.txt'), 'r') as f:
+            descs[name.replace('.jpg', '')] = f.read()
+    return descs
+
+
 logging.basicConfig(level=logging.WARNING)
 ADMIN_ID = str(os.environ.get('ADMIN_ID'))
 BOT_TOKEN = str(os.environ.get('BOT_TOKEN'))
@@ -13,6 +21,7 @@ IMAGES_NAMES = os.listdir('images')
 CLASSIC_NAMES = sorted(os.listdir('categories/classic'))
 EXOTIC_NAMES = sorted(os.listdir('categories/exotic'))
 ADVANCED_NAMES = sorted(os.listdir('categories/advanced'))
+DESCRIPTIONS = load_descriptions(IMAGES_NAMES)
 
 storage = RedisStorage2(db=11)
 # storage = MemoryStorage()
