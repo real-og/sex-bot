@@ -1,4 +1,4 @@
-from loader import dp
+from loader import dp, DESCRIPTIONS
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 import texts
@@ -16,6 +16,16 @@ async def pose_handler(callback: types.CallbackQuery, state: FSMContext):
     elif callback.data == more_pose_btn:
         image_name = logic.get_random_file()
         with open('images/' + image_name, 'rb') as file:
-            await callback.message.answer_photo(file, caption='<i>' + image_name[:-4] + '</i>', reply_markup=kb.pose_card_kb)  
+            await callback.message.answer_photo(file, caption='<i>' + image_name[:-4] + '</i>', reply_markup=kb.pose_card_kb)
+    elif callback.data == desc_btn:
+        name = callback.message.caption.split('\n')[0]
+        caption = name + '\n\n' + DESCRIPTIONS[name]
+        try:
+            if len(callback.message.caption.split('\n')) > 1:
+                await callback.message.edit_caption('<i>' + name + '</i>', reply_markup=kb.pose_card_kb)
+            else:
+                await callback.message.edit_caption('<i>' + caption + '</i>', reply_markup=kb.pose_card_kb)
+        except:
+            await callback.message.answer(texts.error)
     await callback.answer()
     

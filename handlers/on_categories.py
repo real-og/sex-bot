@@ -50,6 +50,7 @@ async def pose_handler(callback: types.CallbackQuery, state: FSMContext):
     if callback.data == back_to_menu_btn:
         await callback.message.answer(texts.menu, reply_markup=kb.menu_kb)
         await State.menu.set()
+        await callback.answer()
         return
     
     if callback.data == desc_btn:
@@ -62,6 +63,7 @@ async def pose_handler(callback: types.CallbackQuery, state: FSMContext):
                 await callback.message.edit_caption('<i>' + caption + '</i>', reply_markup=kb.pose_card_with_category_kb)
         except:
             await callback.message.answer(texts.error)
+        await callback.answer()
         return
 
     
